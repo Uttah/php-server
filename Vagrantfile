@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 hosts = {
-  "host0" => "10.10.58.58"
+  "host0" => "10.10.58.57"
 }
 
 Vagrant.configure("2") do |config|

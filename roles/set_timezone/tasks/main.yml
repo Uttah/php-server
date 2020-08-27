@@ -2,6 +2,6 @@
 # tasks file for set_timezone
 
 - name: Set timezone Europe/Moscow
-    timezone:
-      name: Europe/Moscow
+  timezone:
+    name: Europe/Moscow
 

@@ -28,7 +28,7 @@
     group: deploy
 
 - name: make nginx.service and php7.4-fpm.service
-  shell: systemctl cat nginx > /home/deploy/.config/systemd/user/nginx.service && systemctl cat php7.4-fpm > /home/deploy/.config/systemd/user/php7.4-fpm.service && chown -R deploy: deploy /home/deploy
+  shell: systemctl cat nginx > /home/deploy/.config/systemd/user/nginx.service && systemctl cat php7.4-fpm > /home/deploy/.config/systemd/user/php7.4-fpm.service && chown -R deploy:deploy /home/deploy
 
 - name: systemctl --user
   systemd:

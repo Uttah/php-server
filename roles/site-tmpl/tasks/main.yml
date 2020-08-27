@@ -17,5 +17,6 @@
     dest: /etc/nginx/conf.d/test.conf
 
 - name: make ssl dir
-  file: /etc/nginx/ssl
-  state: directory
+  file: 
+    src: /etc/nginx/ssl
+    state: directory
