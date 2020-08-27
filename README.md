@@ -1,4 +1,4 @@
-###How to test
+### How to test
 
 `vagrant up` up vm with 512Mb
 
