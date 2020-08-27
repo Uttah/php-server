@@ -1,0 +1,5 @@
+---
+# vars file for roles/network
+
+ipv4_address: 192.168.33.13/24
+dns_server: 192.168.33.1

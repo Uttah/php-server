@@ -1,0 +1,21 @@
+---
+# tasks file for fpm-conf
+
+- name: modify /etc/php/7.4/fpm/pool.d/www.conf
+  lineinfile:
+    path: /etc/php/7.4/fpm/pool.d/www.conf
+    regexp: '^pm = dynamic'
+    line: pm = dynamic
+    state: present
+
+- name: modify /etc/php/7.4/fpm/pool.d/www.conf for pm.max_children
+  lineinfile:
+    path: /etc/php/7.4/fpm/pool.d/www.conf
+    regexp: '^pm.max_children'
+    line: pm.max_children = 100
+
+- name: restat fpm unit
+  systemd:
+    name: php7.4-fpm
+    state: restarted
+    enabled: true

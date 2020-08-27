@@ -1,0 +1,36 @@
+---
+# tasks file for systemd-units
+
+- name: install dbus-user-session
+  apt:
+    name: [ 'dbus-user-session' ]
+    state: preesnt
+
+- name: restart server
+  shell: 'sleep 1 && shutdown -r now "Reboot triggered by Ansible" && sleep 1'
+  async: 1
+  poll: 0
+  become: true
+
+- name: Wait for server to restart
+  local_action:
+    module: wait_for
+      host="{{ ipv4_address }}"
+      port=22
+      delay=1
+      timeout=300
+
+- name: create ~/.config/systemd/user
+  file:
+    path: /home/deploy/.config/systemd/user
+    state: directory
+    owner: deploy
+    group: deploy
+
+- name: make nginx.service and php7.4-fpm.service
+  shell: systemctl cat nginx > /home/deploy/.config/systemd/user/nginx.service && systemctl cat php7.4-fpm > /home/deploy/.config/systemd/user/php7.4-fpm.service && chown -R deploy: deploy /home/deploy
+
+- name: systemctl --user
+  systemd:
+    scope: user
+    daemon_reload: yes

@@ -1,0 +1,5 @@
+---
+# vars file for create_dir
+
+dir_name: /src/projects
+username: deploy

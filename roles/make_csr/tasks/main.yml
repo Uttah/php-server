@@ -1,0 +1,8 @@
+---
+# tasks file for make_csr
+
+- name: make csr
+  openssl_csr:
+    path: /etc/ssl/csr/www.{{ domain_name }}.com.csr
+    privatekey_path: /etc/ssl/private/{{ domain_name }}.com.pem
+    common_name: www.{{ domain_name }}.com

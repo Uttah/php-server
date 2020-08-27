@@ -1,0 +1,6 @@
+---
+# tasks file for roles/make-file
+- name: make test file
+  file:
+    path: /tmp/test-file
+    state: touch

@@ -1,0 +1,8 @@
+---
+# tasks file for fetch_public
+
+- name: fetch public keys
+    fetch:
+      src: /home/{{ username }}/.ssh/{{ username }}.pub
+      dest: /Users/utah/tmp/vigrom-test/{{ username }}.pub
+      flat: yes

@@ -1,0 +1,17 @@
+---
+# tasks file for install_certbot
+
+- name: install certbot
+  apt:
+    name: [ 'software-properties-common' ]
+    state: present
+
+- name: install ppa for certbot
+  apt_repository:
+    repo: ppa:certbot/certbot
+
+- name: apt install certbot
+  apt:
+    name: [ 'python-certbot-nginx' ]
+    state: present
+    update_cache: yes

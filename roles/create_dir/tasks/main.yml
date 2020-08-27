@@ -1,0 +1,10 @@
+---
+# tasks file for create_dir
+
+- name: create directory
+  file:
+    path: "{{ dir_name }}"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0777'

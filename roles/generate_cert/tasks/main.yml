@@ -1,0 +1,6 @@
+---
+# tasks file for generate_cert
+- name: generate cert
+  letsencrypt:
+    csr: /etc/ssl/csr/www.{{ domain_name }}.com.csr #TODO
+    dest: /etc/nginx/ssl/{{ domain_name }}.com.crt

@@ -1,0 +1,8 @@
+---
+# tasks file for install_package
+
+- name: install package
+  apt:
+    name: "{{ package_name }}"
+    state: present
+    update_cache: yes

@@ -1,0 +1,23 @@
+---
+# tasks file for ufw
+
+- name: Allow ssh for some hosts
+  ufw:
+    state: enabled
+    rule: allow
+    src: '{{ item }}'
+    port: '22'
+  loop:
+    - 100.100.100.100
+    - 101.100.100.101
+
+- name: allow 80
+  ufw:
+    rule: allow
+    port: '80'
+
+- name: allow 443
+  ufw:
+    rule: allow
+    port: '443'
+

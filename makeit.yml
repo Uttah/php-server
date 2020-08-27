@@ -1,0 +1,50 @@
+---
+- hosts: master
+  gather_facts: no
+  become: true
+  become_user: root
+  roles:
+    - network
+
+- hosts: master-new
+  gather_facts: no
+  become: true
+  become_user: root
+  roles:
+    - set_hostname
+    - set_timezone
+    - create_user
+    - fetch_public
+    - create_dir
+    - install_package
+    - configure_nginx
+    - site_tmpl
+    - install_certbot
+    - make_csr
+    - generate_cert
+    - install_php
+    - fpm-conf
+    - systemd-units
+    - ufw
+
+  vars:
+    network:
+      - ipv4_address: 10.10.58.58./24
+      - dns_server: 10.10.58.11/24
+    set_hostname:
+      - hostname: test
+    fetch_public:
+      - username: deploy
+    create_dir:
+      - username: deploy
+      - dir_name: /src/projects
+    install_package:
+      - package_name: nginx
+    make_csr:
+      - domain_name: test
+    generate_cer:
+      - domain_name: test
+    systemd_units:
+      - ipv4_address: 10.10.58.58./24
+
+

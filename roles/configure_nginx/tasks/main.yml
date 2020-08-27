@@ -1,0 +1,15 @@
+---
+# tasks file for configure_nginx
+
+- name: tune nginx.conf workers
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    regexp: '^worker_processes'
+    line: worker_processes 48;
+
+- name: tune nginx.conf connections
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    regexp: '^\s*worker_connections'
+    line: worker_connections 1024;
+

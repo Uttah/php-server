@@ -1,0 +1,19 @@
+---
+# tasks file for roles/network
+
+- name: remove all yml from /etc/netplan
+  shell: rm /etc/netplan/*yaml
+
+- name: set dhcp network
+  template:
+    src: 50-dhcp.yml.tmpl
+    dest: /etc/netplan/50-dhcp.yaml
+
+- name: set manual network
+  template:
+    src: 50-new.yml.tmpl
+    dest: /etc/netplan/50-new.yaml
+
+- name: restart netplan
+  shell: netplan apply
+  ignore_unreachable: true

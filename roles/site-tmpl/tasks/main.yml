@@ -1,0 +1,21 @@
+---
+# tasks file for site-tmpl
+
+- name: move site template
+  template:
+    src: test.tmpl
+    dest: /etc/nginx/conf.d/test.conf
+
+- name: put ssl.inc
+  template:
+    src: ssl.inc
+    dest: /etc/nginx/ssl.inc
+
+- name: make link for site conf
+  file:
+    src: /etc/nginx/site-enabled/test.conf #TODO
+    dest: /etc/nginx/conf.d/test.conf
+
+- name: make ssl dir
+  file: /etc/nginx/ssl
+  state: directory
